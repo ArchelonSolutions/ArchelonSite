@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
-import { 
-  Menu, 
-  X, 
-  Globe, 
-  Shield, 
-  Zap, 
-  Users, 
-  Phone, 
-  Mail, 
+import React, { useRef, useState } from 'react';
+import {
+  Menu,
+  X,
+  Globe,
+  Shield,
+  Zap,
+  Users,
+  Phone,
+  Mail,
   MapPin,
   ArrowRight,
+  ArrowLeft,
   Star,
   CheckCircle,
   Wifi,
   Server,
   Headphones
 } from 'lucide-react';
-
+import { services, servicePackages } from '../src/servicesData'
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -24,7 +25,16 @@ function App() {
     email: '',
     message: ''
   });
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const scrollRef = useRef(null);
+  const [message, setMessage] = useState('');
 
+  const handleSendEmail = () => {
+    const email = 'archelonsolutions@gmail.com';
+    const subject = encodeURIComponent('Inquiry from Website');
+    const body = encodeURIComponent(formData.message);
+    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+  };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -38,6 +48,15 @@ function App() {
     console.log('Form submitted:', formData);
   };
 
+  const scroll = (direction) => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({
+        left: direction === "left" ? -300 : 300,
+        behavior: "smooth",
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -45,16 +64,16 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <Globe className="h-8 w-8 text-blue-600" />
-              <span className="ml-2 text-xl font-bold text-gray-900">Heartland.net</span>
+              <img src='/Assets/AS.png' className="h-8 w-8 text-blue-600" ></img>
+              <span className="ml-2 text-xl font-bold text-gray-900">Archelon Solutions</span>
             </div>
-            
+
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
                 <a href="#home" className="text-gray-900 hover:text-blue-600 transition-colors duration-200 font-medium">Home</a>
                 <a href="#services" className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">Services</a>
-                <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">About</a>
+                <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">Pricing</a>
                 <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">Contact</a>
               </div>
             </div>
@@ -100,12 +119,12 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Connect to the
-                <span className="text-blue-600 block">Digital Future</span>
+              <h1 className="text-4xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+                Driving innovation with
+                <span className="text-blue-600 block">smart, secure, and scalable tech solutions.</span>
               </h1>
               <p className="mt-6 text-xl text-gray-600 leading-relaxed">
-                Experience lightning-fast internet, reliable hosting, and enterprise-grade networking solutions that power your business forward.
+                Archelon Solutions is a Bloomington-based tech consulting firm delivering high-quality, client-centered technology solutions. We empower businesses and organizations through innovative digital services, ranging from software development and artificial intelligence to cybersecurity and cloud infrastructure. Built on the principle of accessible, impact-driven technology, Archelon Solutions offers flexible, expert-led solutions that enable growth, digital engagement, and resilience.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
                 <button className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-200 font-semibold flex items-center justify-center group">
@@ -118,27 +137,34 @@ function App() {
               </div>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Modern networking infrastructure" 
+              <img
+                src="https://images.pexels.com/photos/442150/pexels-photo-442150.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Modern networking infrastructure"
                 className="rounded-2xl shadow-2xl"
               />
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-xl shadow-lg border border-gray-100">
-                <div className="flex items-center">
-                  <Zap className="h-8 w-8 text-orange-500" />
-                  <div className="ml-3">
-                    <div className="text-2xl font-bold text-gray-900">99.9%</div>
-                    <div className="text-sm text-gray-600">Uptime Guarantee</div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white">
+      <section id="services" className="py-20 bg-white relative">
+        {/* Scroll Buttons */}
+        <div className="action-btns">
+          <button
+            onClick={() => scroll("left")}
+            className="absolute top-1/2 left-6 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg"
+          >
+            <ArrowLeft className="h-4 w-4" />
+          </button>
+          <button
+            onClick={() => scroll("right")}
+            className="absolute top-1/2 right-6 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg"
+          >
+            <ArrowRight className="h-4 w-4" />
+          </button>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
@@ -149,72 +175,27 @@ function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Service 1 */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group">
-              <div className="bg-blue-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-200 transition-colors duration-300">
-                <Wifi className="h-8 w-8 text-blue-600" />
+          {/* Horizontal Scroll (no size change) */}
+          <div ref={scrollRef} className="flex flex-nowrap gap-8 overflow-x-auto scroll-smooth scrollbar-hide pb-10">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group flex-shrink-0 w-full md:w-[calc(33.333%-1.333rem)]"
+              >
+                <div
+                  className={`${service.bgColor} w-16 h-16 rounded-xl flex items-center justify-center mb-6 ${service.hoverBgColor} transition-colors duration-300`}
+                >
+                  <service.icon className={`h-8 w-8 ${service.iconColor}`} />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 mb-6">{service.description}</p>
+                <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors duration-200">
+                  Learn more <ArrowRight className="ml-2 h-4 w-4" />
+                </div>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">High-Speed Internet</h3>
-              <p className="text-gray-600 mb-6">
-                Blazing-fast fiber optic internet with speeds up to 1 Gigabit. Perfect for businesses and homes that demand reliable connectivity.
-              </p>
-              <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors duration-200">
-                Learn more <ArrowRight className="ml-2 h-4 w-4" />
-              </div>
-            </div>
-
-            {/* Service 2 */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group">
-              <div className="bg-orange-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-200 transition-colors duration-300">
-                <Server className="h-8 w-8 text-orange-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Web Hosting</h3>
-              <p className="text-gray-600 mb-6">
-                Secure, scalable hosting solutions with 99.9% uptime guarantee. From shared hosting to dedicated servers.
-              </p>
-              <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors duration-200">
-                Learn more <ArrowRight className="ml-2 h-4 w-4" />
-              </div>
-            </div>
-
-            {/* Service 3 */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 group">
-              <div className="bg-green-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6 group-hover:bg-green-200 transition-colors duration-300">
-                <Shield className="h-8 w-8 text-green-600" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">Network Security</h3>
-              <p className="text-gray-600 mb-6">
-                Advanced cybersecurity solutions to protect your business from threats. Firewall management and monitoring included.
-              </p>
-              <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors duration-200">
-                Learn more <ArrowRight className="ml-2 h-4 w-4" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-700">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">10,000+</div>
-              <div className="text-blue-100">Happy Customers</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">99.9%</div>
-              <div className="text-blue-100">Uptime Guarantee</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">24/7</div>
-              <div className="text-blue-100">Expert Support</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-white mb-2">15+</div>
-              <div className="text-blue-100">Years Experience</div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -225,30 +206,38 @@ function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Powering America's Heartland Since 2008
+                Add-On Services and Flexible Payment Options
               </h2>
               <p className="text-lg text-gray-600 mb-6">
-                We understand that reliable internet and hosting services are essential for modern businesses. That's why we've built a robust network infrastructure that serves communities across the Midwest with enterprise-grade reliability.
-              </p>
+                We offer tailored solutions to meet your evolving business needs. Whether you're looking to enhance your service package or need custom project support, our flexible model ensures you get exactly what fits.              </p>
               <div className="space-y-4">
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-green-500 mr-3" />
-                  <span className="text-gray-700">Local support team based in your community</span>
+                  <span className="text-gray-700"><b>Hourly Rate</b> – Ideal for short-term tasks like consultations or training</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-green-500 mr-3" />
-                  <span className="text-gray-700">Enterprise-grade infrastructure</span>
+                  <span className="text-gray-700"><b>Monthly Retainer</b> – Best for ongoing, consistent support</span>
                 </div>
                 <div className="flex items-center">
                   <CheckCircle className="h-6 w-6 text-green-500 mr-3" />
-                  <span className="text-gray-700">Transparent pricing with no hidden fees</span>
+                  <span className="text-gray-700"><b>Milestone based Payments</b> –Pay as each project phase is completed</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="h-6 w-6 text-green-500 mr-3" />
+                  <span className="text-gray-700"><b>Flexible Packages</b> – Customizable based on client scope and budget
+                  </span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="h-6 w-6 text-green-500 mr-3" />
+                  <span className="text-gray-700"><b>Transparent Pricing</b> – No hidden fees or surprise costs</span>
                 </div>
               </div>
             </div>
             <div>
-              <img 
-                src="https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Network operations center" 
+              <img
+                src="https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Network operations center"
                 className="rounded-2xl shadow-lg"
               />
             </div>
@@ -261,64 +250,37 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              What Our Customers Say
+              Packages and Pricing
             </h2>
           </div>
-
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-6">
-                "Heartland.net has been our ISP for 3 years now. Their support is outstanding and we've never experienced any major downtime."
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                <div>
-                  <div className="font-semibold text-gray-900">Sarah Johnson</div>
-                  <div className="text-sm text-gray-600">Small Business Owner</div>
+            {servicePackages.map((pkg, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100"
+              >
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
+                <p className="text-sm text-gray-700 mb-4">
+                  <span className="font-semibold">Ideal for:</span> {pkg.idealFor}
+                </p>
+                <div className="mb-4">
+                  <p className="font-semibold text-sm text-gray-800 mb-1">Included Services:</p>
+                  <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                    {pkg.includedServices.map((service, i) => (
+                      <li key={i}>{service}</li>
+                    ))}
+                  </ul>
                 </div>
+                <p className="text-sm text-gray-700 mb-2">
+                  <span className="font-semibold">Pricing Model:</span> {pkg.pricingModel}
+                </p>
+                <p className="text-sm text-gray-700">
+                  <span className="font-semibold">Benefits:</span> {pkg.benefits}
+                </p>
               </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-6">
-                "The fiber internet speeds are incredible. Our entire team can work remotely without any connectivity issues."
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                <div>
-                  <div className="font-semibold text-gray-900">Mike Chen</div>
-                  <div className="text-sm text-gray-600">Tech Startup CEO</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100">
-              <div className="flex items-center mb-4">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-600 mb-6">
-                "Professional hosting service with excellent uptime. Our e-commerce site has never been more stable."
-              </p>
-              <div className="flex items-center">
-                <div className="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
-                <div>
-                  <div className="font-semibold text-gray-900">Lisa Rodriguez</div>
-                  <div className="text-sm text-gray-600">E-commerce Manager</div>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -354,7 +316,7 @@ function App() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Email Us</div>
-                  <div className="text-gray-600">hello@heartland.net</div>
+                  <div className="text-gray-600">archelonsolutions@gmail.com</div>
                 </div>
               </div>
 
@@ -430,6 +392,7 @@ function App() {
                 <button
                   type="submit"
                   className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold"
+                  onClick={handleSendEmail}
                 >
                   Send Message
                 </button>
