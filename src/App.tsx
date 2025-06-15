@@ -64,22 +64,22 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src='/Assets/AS.png' className="h-8 w-8 text-blue-600" ></img>
-              <span className="ml-2 text-xl font-bold text-gray-900">Archelon Solutions</span>
+              <img src='./assets/ASLogo.jpg' className="h-12 w-12 text-blue-600" ></img>
+              <span className="ml-2 text-xl font-bold text-[#00112C]">Archelon Solutions</span>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                <a href="#home" className="text-gray-900 hover:text-blue-600 transition-colors duration-200 font-medium">Home</a>
-                <a href="#services" className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">Services</a>
-                <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">Pricing</a>
-                <a href="#contact" className="text-gray-700 hover:text-blue-600 transition-colors duration-200 font-medium">Contact</a>
+                <a href="#home" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Home</a>
+                <a href="#services" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Services</a>
+                <a href="#about" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Pricing</a>
+                <a href="#contact" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Contact</a>
               </div>
             </div>
 
             <div className="hidden md:block">
-              <button className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
+              <button className="bg-[#00112C] text-white px-6 py-2 rounded-lg hover:bg-[#CE1C1A] transition-colors duration-200 font-medium">
                 Get Started
               </button>
             </div>
@@ -115,23 +115,23 @@ function App() {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="relative bg-gradient-to-br from-blue-50 to-indigo-100 py-20 lg:py-32">
+      <section id="home" className="relative py-20 lg:py-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-4xl sm:text-4xl lg:text-5xl font-bold text-black-900 leading-tight">
                 Driving innovation with
-                <span className="text-blue-600 block">smart, secure, and scalable tech solutions.</span>
+                <span className="text-[#CE1C1A] block">smart, secure, and scalable tech solutions.</span>
               </h1>
               <p className="mt-6 text-xl text-gray-600 leading-relaxed">
                 Archelon Solutions is a Bloomington-based tech consulting firm delivering high-quality, client-centered technology solutions. We empower businesses and organizations through innovative digital services, ranging from software development and artificial intelligence to cybersecurity and cloud infrastructure. Built on the principle of accessible, impact-driven technology, Archelon Solutions offers flexible, expert-led solutions that enable growth, digital engagement, and resilience.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                <button className="bg-blue-600 text-white px-8 py-4 rounded-lg hover:bg-blue-700 transition-all duration-200 font-semibold flex items-center justify-center group">
+                <button className="bg-[#00112C] text-white px-8 py-4 rounded-lg hover:bg-[#CE1C1A] transition-all duration-200 font-semibold flex items-center justify-center group">
                   Get Started Today
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-200" />
                 </button>
-                <button className="border-2 border-gray-300 text-gray-700 px-8 py-4 rounded-lg hover:border-blue-600 hover:text-blue-600 transition-all duration-200 font-semibold">
+                <button className="border-2 border-[#00112C] text-[#00112C] px-8 py-4 rounded-lg hover:border-[#CE1C1A] hover:text-[#CE1C1A] transition-all duration-200 font-semibold">
                   Learn More
                 </button>
               </div>
@@ -148,29 +148,28 @@ function App() {
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 bg-white relative">
+      <section id="services" className="py-20 lg:py-28 bg-white relative">
         {/* Scroll Buttons */}
         <div className="action-btns">
           <button
             onClick={() => scroll("left")}
-            className="absolute top-1/2 left-6 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg"
-          >
-            <ArrowLeft className="h-4 w-4" />
+            className="absolute top-1/2 left-6 transform -translate-y-1/2">
+            <ArrowLeft className="py-18 h-10 w-10 text-[#00112C] hover:text-[#CE1C1A] hover:-translate-x-1 transition-all duration-200" />
           </button>
           <button
             onClick={() => scroll("right")}
-            className="absolute top-1/2 right-6 transform -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full shadow-lg"
-          >
-            <ArrowRight className="h-4 w-4" />
+            className="absolute top-1/2 right-6 transform -translate-y-1/2 ">
+            <ArrowRight className="py-18 h-10 w-10 text-[#00112C] hover:text-[#CE1C1A] hover:translate-x-1 transition-all duration-200" />
+
           </button>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#CE1C1A] mb-4">
               Comprehensive Digital Solutions
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p className="text-xl text-[#00112C] max-w-3xl mx-auto">
               From high-speed internet to enterprise hosting, we provide the infrastructure your business needs to thrive in the digital age.
             </p>
           </div>
@@ -191,7 +190,7 @@ function App() {
                   {service.title}
                 </h3>
                 <p className="text-gray-600 mb-6">{service.description}</p>
-                <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors duration-200">
+                <div className="flex items-center text-[#00112C] font-medium group-hover:text-[#CE1C1A] transition-colors duration-200">
                   Learn more <ArrowRight className="ml-2 h-4 w-4" />
                 </div>
               </div>
@@ -200,12 +199,12 @@ function App() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-20 bg-gray-50">
+      {/* Pricing Section */}
+      <section id="about" className="py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#CE1C1A] mb-6">
                 Add-On Services and Flexible Payment Options
               </h2>
               <p className="text-lg text-gray-600 mb-6">
@@ -245,11 +244,11 @@ function App() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* Packages and Pricing */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#CE1C1A] mb-4">
               Packages and Pricing
             </h2>
           </div>
@@ -261,12 +260,12 @@ function App() {
                 key={index}
                 className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100"
               >
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{pkg.name}</h3>
+                <h3 className="text-xl font-bold text-[#00112C] mb-2">{pkg.name}</h3>
                 <p className="text-sm text-gray-700 mb-4">
-                  <span className="font-semibold">Ideal for:</span> {pkg.idealFor}
+                  <span className="font-bold text-[#00112C]">Ideal for:</span> {pkg.idealFor}
                 </p>
                 <div className="mb-4">
-                  <p className="font-semibold text-sm text-gray-800 mb-1">Included Services:</p>
+                  <p className="font-bold text-sm text-[#00112C] mb-1">Included Services:</p>
                   <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
                     {pkg.includedServices.map((service, i) => (
                       <li key={i}>{service}</li>
@@ -274,10 +273,10 @@ function App() {
                   </ul>
                 </div>
                 <p className="text-sm text-gray-700 mb-2">
-                  <span className="font-semibold">Pricing Model:</span> {pkg.pricingModel}
+                  <span className="font-bold text-[#00112C]">Pricing Model:</span> {pkg.pricingModel}
                 </p>
                 <p className="text-sm text-gray-700">
-                  <span className="font-semibold">Benefits:</span> {pkg.benefits}
+                  <span className="font-bold text-[#00112C]">Benefits:</span> {pkg.benefits}
                 </p>
               </div>
             ))}
@@ -286,10 +285,10 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
+      <section id="contact" className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#CE1C1A] mb-4">
               Ready to Get Connected?
             </h2>
             <p className="text-xl text-gray-600">
@@ -304,11 +303,11 @@ function App() {
                 <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
                   <Phone className="h-6 w-6 text-blue-600" />
                 </div>
-                <div>
+               <div>
                   <div className="font-semibold text-gray-900">Call Us</div>
                   <div className="text-gray-600">1-800-HEARTLAND</div>
                 </div>
-              </div>
+              </div> 
 
               <div className="flex items-center">
                 <div className="bg-orange-100 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
@@ -391,7 +390,7 @@ function App() {
 
                 <button
                   type="submit"
-                  className="w-full bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-semibold"
+                  className="w-full bg-[#00112C] text-white px-6 py-3 rounded-lg hover:bg-[#CE1C1A] transition-colors duration-200 font-semibold"
                   onClick={handleSendEmail}
                 >
                   Send Message
@@ -408,10 +407,10 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center mb-4">
-                <Globe className="h-8 w-8 text-blue-400" />
-                <span className="ml-2 text-xl font-bold">Heartland.net</span>
+                <img src="/assets/ASLogo.jpg" className="h-20 w-20 text-blue-400" />
+                <span className="ml-2 text-xl font-bold">Archelon Solutions</span>
               </div>
-              <p className="text-gray-400 mb-4">
+              <p className="text-gray-400 mb-4 ml-8">
                 Connecting communities across America's heartland with reliable internet and hosting solutions.
               </p>
             </div>
@@ -419,30 +418,29 @@ function App() {
             <div>
               <h3 className="text-lg font-semibold mb-4">Services</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors duration-200">High-Speed Internet</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-200">Web Hosting</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-200">Network Security</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-200">Business Solutions</a></li>
+                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Web Hosting</a></li>
+                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Network Security</a></li>
+                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Business Solutions</a></li>
               </ul>
             </div>
 
             <div>
               <h3 className="text-lg font-semibold mb-4">Support</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors duration-200">Help Center</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-200">Network Status</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-200">Contact Support</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-200">System Requirements</a></li>
+                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Help Center</a></li>
+                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Network Status</a></li>
+                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Contact Support</a></li>
+                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">System Requirements</a></li>
               </ul>
             </div>
 
             <div>
               <h3 className="text-lg font-semibold mb-4">Company</h3>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors duration-200">About Us</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-200">Careers</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-200">Privacy Policy</a></li>
-                <li><a href="#" className="hover:text-white transition-colors duration-200">Terms of Service</a></li>
+                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">About Us</a></li>
+                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Careers</a></li>
+                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Privacy Policy</a></li>
+                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Terms of Service</a></li>
               </ul>
             </div>
           </div>
@@ -450,12 +448,12 @@ function App() {
           <div className="border-t border-gray-800 pt-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-gray-400 text-sm">
-                © 2024 Heartland.net. All rights reserved.
+                © 2025 Archelonsolutions.com. All rights reserved.
               </p>
               <div className="flex space-x-6 mt-4 md:mt-0">
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Privacy</a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Terms</a>
-                <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">Accessibility</a>
+                <a href="#" className="text-gray-400 hover:text-[#CE1C1A] transition-colors duration-200">Privacy</a>
+                <a href="#" className="text-gray-400 hover:text-[#CE1C1A] transition-colors duration-200">Terms</a>
+                <a href="#" className="text-gray-400 hover:text-[#CE1C1A] transition-colors duration-200">Accessibility</a>
               </div>
             </div>
           </div>
