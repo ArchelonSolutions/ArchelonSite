@@ -18,6 +18,7 @@ import {
   Headphones
 } from 'lucide-react';
 import { services, servicePackages } from '../src/servicesData'
+import ASLogo from '../assets/ASLogo.jpg';
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -64,7 +65,7 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <img src='/ASLogo.jpg' className="h-12 w-12 text-blue-600" ></img>
+              <img src={ASLogo} className="h-12 w-12 text-blue-600" ></img>
               <span className="ml-2 text-xl font-bold text-[#00112C]">Archelon Solutions</span>
             </div>
 
@@ -407,7 +408,7 @@ function App() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center mb-4">
-                <img src="/ASLogo.jpg" className="h-20 w-20 text-blue-400" />
+                <img src={ASLogo} className="h-20 w-20 text-blue-400" />
                 <span className="ml-2 text-xl font-bold">Archelon Solutions</span>
               </div>
               <p className="text-gray-400 mb-4 ml-8">
