@@ -52,7 +52,7 @@ function App() {
   const scroll = (direction) => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
-        left: direction === "left" ? -300 : 300,
+        left: direction === "left" ? -1300 : 1300,
         behavior: "smooth",
       });
     }
@@ -249,7 +249,7 @@ function App() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#CE1C1A] mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#CE1C1A] group-hover:text-[#CE1C1A] transition-colors duration-200 mb-4">
               Packages and Pricing
             </h2>
           </div>
@@ -259,25 +259,25 @@ function App() {
             {servicePackages.map((pkg, index) => (
               <div
                 key={index}
-                className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100"
+                className="group bg-white p-8 rounded-2xl shadow-lg border border-gray-100 transform transition-transform duration-300 hover:scale-105"
               >
-                <h3 className="text-xl font-bold text-[#00112C] mb-2">{pkg.name}</h3>
-                <p className="text-sm text-gray-700 mb-4">
-                  <span className="font-bold text-[#00112C]">Ideal for:</span> {pkg.idealFor}
+                <h3 className="text-xl font-bold text-[#00112C] group-hover:text-[#CE1C1A] transition-colors duration-200 mb-2">{pkg.name}</h3>
+                <p className="text-sm text-black-700 mb-4">
+                  <span className="font-bold text-[#00112C] group-hover:text-[#CE1C1A] transition-colors duration-200">Ideal for:</span> <span>{pkg.idealFor}</span>
                 </p>
                 <div className="mb-4">
-                  <p className="font-bold text-sm text-[#00112C] mb-1">Included Services:</p>
-                  <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                  <p className="font-bold text-sm text-[#00112C] group-hover:text-[#CE1C1A] transition-colors duration-200 mb-1">Included Services:</p>
+                  <ul className="list-disc list-inside text-sm text-black-600 space-y-1">
                     {pkg.includedServices.map((service, i) => (
                       <li key={i}>{service}</li>
                     ))}
                   </ul>
                 </div>
-                <p className="text-sm text-gray-700 mb-2">
-                  <span className="font-bold text-[#00112C]">Pricing Model:</span> {pkg.pricingModel}
+                <p className="text-sm text-black-700 mb-2">
+                  <span className="font-bold text-[#00112C] group-hover:text-[#CE1C1A] transition-colors duration-200">Pricing Model:</span> {pkg.pricingModel}
                 </p>
-                <p className="text-sm text-gray-700">
-                  <span className="font-bold text-[#00112C]">Benefits:</span> {pkg.benefits}
+                <p className="text-sm text-black-700">
+                  <span className="font-bold text-[#00112C] group-hover:text-[#CE1C1A] transition-colors duration-200">Benefits:</span> {pkg.benefits}
                 </p>
               </div>
             ))}
@@ -304,11 +304,11 @@ function App() {
                 <div className="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
                   <Phone className="h-6 w-6 text-blue-600" />
                 </div>
-               <div>
+                <div>
                   <div className="font-semibold text-gray-900">Call Us</div>
                   <div className="text-gray-600">1-800-HEARTLAND</div>
                 </div>
-              </div> 
+              </div>
 
               <div className="flex items-center">
                 <div className="bg-orange-100 w-12 h-12 rounded-lg flex items-center justify-center mr-4">
