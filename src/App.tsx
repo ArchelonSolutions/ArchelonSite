@@ -412,8 +412,7 @@ function App() {
                 <span className="ml-2 text-xl font-bold">Archelon Solutions</span>
               </div>
               <p className="text-gray-400 mb-4 ml-8">
-                Connecting communities across America's heartland with reliable internet and hosting solutions.
-              </p>
+                Empowering organizations with client-focused tech solutions that drive growth, resilience, and digital transformation.</p>
             </div>
 
             <div>
