@@ -1,5 +1,5 @@
 // servicesData.js
-import { Wifi, Server, Shield } from "lucide-react";
+import { Wifi, Server, Shield, Search, Cloudy, ClipboardList  } from "lucide-react";
 
 export const services = [
   {
@@ -33,16 +33,16 @@ export const services = [
     title: "Digital Marketing & SEO",
     description:
       "Boost your online presence with targeted SEO and marketing strategies. We help you attract the right audience, grow brand visibility, and drive engagement.",
-    icon: Shield,
-    bgColor: "bg-green-100",
-    hoverBgColor: "group-hover:bg-green-200",
-    iconColor: "text-green-600",
+    icon: Search,
+    bgColor: "bg-orange-100",
+    hoverBgColor: "group-hover:bg-orange-200",
+    iconColor: "text-orange-600",
   },
   {
     title: "Cloud Computing and Infrastructure",
     description:
       "Optimize performance and scalability with secure cloud solutions. We help businesses leverage AWS, GCP, and Azure to drive agility, reliability, and cost-efficiency.",
-    icon: Shield,
+    icon: Cloudy,
     bgColor: "bg-green-100",
     hoverBgColor: "group-hover:bg-green-200",
     iconColor: "text-green-600",
@@ -51,10 +51,10 @@ export const services = [
     title: "Project Management & Communication",
     description:
       "We ensure every project stays on track with clear communication, agile workflows, and dedicated management from start to finish.",
-    icon: Shield,
-    bgColor: "bg-green-100",
-    hoverBgColor: "group-hover:bg-green-200",
-    iconColor: "text-green-600",
+    icon: ClipboardList ,
+    bgColor: "bg-blue-100",
+    hoverBgColor: "group-hover:bg-blue-200",
+    iconColor: "text-blue-600",
   },
 ];
 
