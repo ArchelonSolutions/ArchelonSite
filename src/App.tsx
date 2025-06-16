@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { forwardRef, useRef, useState } from 'react';
 import {
   Menu,
   X,
@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { services, servicePackages } from '../src/servicesData'
 import ASLogo from '../assets/ASLogo.jpg';
+import emailjs from '@emailjs/browser';
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -29,12 +30,30 @@ function App() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const scrollRef = useRef(null);
   const [message, setMessage] = useState('');
+  const form = useRef();
+  const sendEmail = (e) => {
+    e.preventDefault();
 
-  const handleSendEmail = () => {
-    const email = 'archelonsolutions@gmail.com';
-    const subject = encodeURIComponent('Inquiry from Website');
-    const body = encodeURIComponent(formData.message);
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`;
+    emailjs
+      .sendForm(
+        'service_bidf1hm',       // Your actual service ID
+        'template_p4xksks',      // Your email template ID
+        form.current,
+        {
+          publicKey: 'D8SP_zD6F_grJUtAc', // Your EmailJS public key
+        }
+      )
+      .then(
+        (result) => {
+          console.log('SUCCESS!', result.text);
+          alert('Message sent successfully!');
+          form.current.reset(); // Optional: reset form after sending
+        },
+        (error) => {
+          console.error('FAILED...', error.text);
+          alert('Failed to send message. Please try again.');
+        }
+      );
   };
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -66,7 +85,9 @@ function App() {
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
               <img src={ASLogo} className="h-12 w-12 text-blue-600" ></img>
-              <span className="ml-2 text-xl font-bold text-[#00112C]">Archelon Solutions</span>
+              <a href="#home" className="ml-2 text-xl font-bold text-[#00112C]">
+                Archelon Solutions
+              </a>
             </div>
 
             {/* Desktop Navigation */}
@@ -74,16 +95,16 @@ function App() {
               <div className="ml-10 flex items-baseline space-x-8">
                 <a href="#home" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Home</a>
                 <a href="#services" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Services</a>
-                <a href="#about" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Pricing</a>
+                {/* <a href="#about" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Pricing</a> */}
                 <a href="#contact" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Contact</a>
               </div>
             </div>
 
-            <div className="hidden md:block">
+            {/*    <div className="hidden md:block">
               <button className="bg-[#00112C] text-white px-6 py-2 rounded-lg hover:bg-[#CE1C1A] transition-colors duration-200 font-medium">
                 Get Started
               </button>
-            </div>
+            </div> */}
 
             {/* Mobile menu button */}
             <div className="md:hidden">
@@ -103,7 +124,7 @@ function App() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a href="#home" className="block px-3 py-2 text-gray-900 font-medium">Home</a>
               <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200">Services</a>
-              <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200">About</a>
+              {/* <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200">Pricing</a> */}
               <a href="#contact" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200">Contact</a>
               <div className="px-3 py-2">
                 <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 font-medium">
@@ -201,6 +222,7 @@ function App() {
       </section>
 
       {/* Pricing Section */}
+      {/*
       <section id="about" className="py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -243,9 +265,10 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Packages and Pricing */}
+      {/*
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -283,7 +306,7 @@ function App() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Contact Section */}
       <section id="contact" className="py-20">
@@ -306,7 +329,7 @@ function App() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Call Us</div>
-                  <div className="text-gray-600">1-800-HEARTLAND</div>
+                  <div className="text-gray-600">(812)-671-7143</div>
                 </div>
               </div>
 
@@ -326,7 +349,7 @@ function App() {
                 </div>
                 <div>
                   <div className="font-semibold text-gray-900">Visit Us</div>
-                  <div className="text-gray-600">123 Main Street<br />Heartland, KS 67000</div>
+                  <div className="text-gray-600">5200 West Maple Grove Road<br />Elletsville, IN 47429</div>
                 </div>
               </div>
 
@@ -343,7 +366,7 @@ function App() {
 
             {/* Contact Form */}
             <div className="bg-white p-8 rounded-2xl shadow-lg">
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={form} onSubmit={sendEmail} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                     Full Name
@@ -352,8 +375,6 @@ function App() {
                     type="text"
                     id="name"
                     name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                     placeholder="Your name"
                   />
@@ -367,8 +388,6 @@ function App() {
                     type="email"
                     id="email"
                     name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                     placeholder="your@email.com"
                   />
@@ -381,21 +400,17 @@ function App() {
                   <textarea
                     id="message"
                     name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
                     rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                     placeholder="Tell us about your needs..."
                   />
                 </div>
 
-                <button
+                <input
                   type="submit"
                   className="w-full bg-[#00112C] text-white px-6 py-3 rounded-lg hover:bg-[#CE1C1A] transition-colors duration-200 font-semibold"
-                  onClick={handleSendEmail}
-                >
-                  Send Message
-                </button>
+                  value="Send Message"
+                />
               </form>
             </div>
           </div>
@@ -403,7 +418,7 @@ function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      <footer className="bg-gray-900 text-white py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
             <div>
@@ -415,7 +430,7 @@ function App() {
                 Empowering organizations with client-focused tech solutions that drive growth, resilience, and digital transformation.</p>
             </div>
 
-            <div>
+            <div className='mt-7 ml-12'>
               <h3 className="text-lg font-semibold mb-4">Services</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Web Hosting</a></li>
@@ -424,7 +439,7 @@ function App() {
               </ul>
             </div>
 
-            <div>
+            {/*         <div className='mt-7'>
               <h3 className="text-lg font-semibold mb-4">Support</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Help Center</a></li>
@@ -432,9 +447,9 @@ function App() {
                 <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Contact Support</a></li>
                 <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">System Requirements</a></li>
               </ul>
-            </div>
+            </div> */}
 
-            <div>
+            <div className='mt-7'>
               <h3 className="text-lg font-semibold mb-4">Company</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">About Us</a></li>
@@ -450,11 +465,11 @@ function App() {
               <p className="text-gray-400 text-sm">
                 © 2025 Archelonsolutions.com. All rights reserved.
               </p>
-              <div className="flex space-x-6 mt-4 md:mt-0">
+              {/*   <div className="flex space-x-6 mt-4 md:mt-0">
                 <a href="#" className="text-gray-400 hover:text-[#CE1C1A] transition-colors duration-200">Privacy</a>
                 <a href="#" className="text-gray-400 hover:text-[#CE1C1A] transition-colors duration-200">Terms</a>
                 <a href="#" className="text-gray-400 hover:text-[#CE1C1A] transition-colors duration-200">Accessibility</a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
