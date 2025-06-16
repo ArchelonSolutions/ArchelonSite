@@ -453,7 +453,7 @@ function App() {
               <h3 className="text-lg font-semibold mb-4">Company</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">About Us</a></li>
-                <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Careers</a></li>
+                <li><a href="https://forms.gle/SUwLtzrtPbyotp9YA" target="_blank" className="hover:text-[#CE1C1A] transition-colors duration-200">Careers</a></li>
                 <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Privacy Policy</a></li>
                 <li><a href="#" className="hover:text-[#CE1C1A] transition-colors duration-200">Terms of Service</a></li>
               </ul>
