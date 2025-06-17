@@ -31,6 +31,8 @@ function App() {
   const scrollRef = useRef(null);
   const [message, setMessage] = useState('');
   const form = useRef();
+  const [buttonText, setButtonText] = useState('Send Message');
+  const [isDisabled, setIsDisabled] = useState(false);
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -46,12 +48,14 @@ function App() {
       .then(
         (result) => {
           console.log('SUCCESS!', result.text);
-          alert('Message sent successfully!');
+          setButtonText('Message Sent');
+          setIsDisabled(true);
           form.current.reset(); // Optional: reset form after sending
         },
         (error) => {
           console.error('FAILED...', error.text);
           alert('Failed to send message. Please try again.');
+          setButtonText('Send Message');
         }
       );
   };
@@ -377,6 +381,7 @@ function App() {
                     name="name"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                     placeholder="Your name"
+                    required
                   />
                 </div>
 
@@ -390,6 +395,7 @@ function App() {
                     name="email"
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                     placeholder="your@email.com"
+                    required
                   />
                 </div>
 
@@ -403,13 +409,15 @@ function App() {
                     rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-colors duration-200"
                     placeholder="Tell us about your needs..."
+                    required
                   />
                 </div>
 
                 <input
                   type="submit"
                   className="w-full bg-[#00112C] text-white px-6 py-3 rounded-lg hover:bg-[#CE1C1A] transition-colors duration-200 font-semibold"
-                  value="Send Message"
+                  value={buttonText}
+                  disabled={isDisabled}
                 />
               </form>
             </div>
