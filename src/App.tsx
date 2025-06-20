@@ -97,10 +97,35 @@ function App() {
             {/* Desktop Navigation */}
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                <a href="#home" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Home</a>
-                <a href="#services" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Services</a>
+                <a href="#home" onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector('#home');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }} className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Home</a>
+                <a href="#about" onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector('#about');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }} className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">About Us</a>
+                <a href="#services" onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector('#services');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }} className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Services</a>
                 {/* <a href="#about" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Pricing</a> */}
-                <a href="#contact" className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Contact</a>
+                <a href="#contact" onClick={(e) => {
+                  e.preventDefault();
+                  const target = document.querySelector('#contact');
+                  if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }} className="text-gray-900 hover:text-[#CE1C1A] transition-colors duration-200 font-medium">Contact</a>
               </div>
             </div>
 
@@ -127,7 +152,8 @@ function App() {
           <div className="md:hidden bg-white border-t border-gray-200">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a href="#home" className="block px-3 py-2 text-gray-900 font-medium">Home</a>
-              <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200">Services</a>
+              <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200">Contact</a>
+              <a href="#services" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200">About Us</a>
               {/* <a href="#about" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200">Pricing</a> */}
               <a href="#contact" className="block px-3 py-2 text-gray-700 hover:text-blue-600 transition-colors duration-200">Contact</a>
               <div className="px-3 py-2">
@@ -172,6 +198,79 @@ function App() {
           </div>
         </div>
       </section>
+      {/*About Us */}
+      <section id="about" className="relative py-20 lg:py-30">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="space-y-12">
+            <div>
+              <h1 className="text-4xl sm:text-4xl lg:text-5xl font-bold text-black-900 leading-tight">
+                About <span className="text-[#CE1C1A]">Archelon Solutions</span>
+              </h1>
+            </div>
+
+            <div className="space-y-6">
+              <p className="text-xl text-gray-600 leading-relaxed">
+                At Archelon Solutions, our mission is to empower businesses and organizations by providing innovative, client-centered technology solutions that drive growth, enhance digital engagement, and protect critical data.
+              </p>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Our vision is to become a trusted partner and leader in tech consulting, known for our adaptability, integrity, and dedication to client success.
+              </p>
+            </div>
+
+            <div>
+              <ul className="list-disc list-inside text-gray-600 space-y-2">
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <CheckCircle className="h-6 w-6 text-green-500 mr-3" />
+                    <span className="text-gray-700"><b>Client-Centric Excellence: </b> Personalized, high-quality service aligned with each client’s goals.
+                    </span>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <CheckCircle className="h-6 w-6 text-green-500 mr-3" />
+                    <span className="text-gray-700"><b>Innovation with Integrity:</b> Ethical, transparent, and secure solutions built to last.
+                    </span>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <CheckCircle className="h-6 w-6 text-green-500 mr-3" />
+                    <span className="text-gray-700"><b>Community Impact:: </b> A community-driven mission leveraging local talent from HCN for positive change.
+                    </span>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <CheckCircle className="h-6 w-6 text-green-500 mr-3" />
+                    <span className="text-gray-700"><b>Adaptability: </b> Agile, proactive approach evolving with the latest industry advancements..</span>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <CheckCircle className="h-6 w-6 text-green-500 mr-3" />
+                    <span className="text-gray-700"><b>Collaboration: </b> Empowered teams delivering expertise, accountability, and open communication.</span>
+                  </div>
+                </div>
+              </ul>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button onClick={() => {
+                document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' });
+              }} className="bg-[#00112C] text-white px-8 py-4 rounded-lg hover:bg-[#CE1C1A] transition-all duration-200 font-semibold">
+                Our Services
+              </button>
+              <button onClick={() => {
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }} className="border-2 border-[#00112C] text-[#00112C] px-8 py-4 rounded-lg hover:border-[#CE1C1A] hover:text-[#CE1C1A] transition-all duration-200 font-semibold">
+                Contact Us
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
 
       {/* Services Section */}
       <section id="services" className="py-20 lg:py-28 bg-white relative">
